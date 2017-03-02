@@ -11,3 +11,10 @@
     line: "Include /etc/phpmyadmin/apache.conf"
     insertafter: "EOF"
   notify: restart apache
+
+- name: Remove default service path (add manually to desired vhost)
+  lineinfile: >
+    dest=/etc/phpmyadmin/apache.conf
+    state=absent
+    regexp="^Alias.+$"
+
